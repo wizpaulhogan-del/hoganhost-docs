@@ -36,25 +36,27 @@ Inside, you will find detailed explanations, practical examples, and step-by-ste
     icon="pen-to-square"
     href="/development"
   >
-Our Domains API allows you to manage domain registration, renewal, and DNS settings seamlessly.
+    Edit your docs locally and preview them in real time.
   </Card>
   <Card
     title="Cloud Server"
     icon="palette"
     href="/essentials/settings"
   >
-Our Cloud Server API allows you to provision, manage, and scale virtual servers effortlessly, giving you full control over computing resources and infrastructure.
+    Customize the design and colors of your site to match your brand.
   </Card>
     <Card
     title="Reseller"
     icon="map"
+    href="/essentials/navigation"
   >
-Our Reseller Hosting API enables you to manage client accounts, allocate resources, and automate hosting services for your customers efficiently.
+    Organize your docs to help users find what they need and succeed with your product.
   </Card>
   <Card
     title="Shared Hosting"
     icon="terminal"
+    href="/api-reference/introduction"
   >
-Our Shared Hosting API lets you manage shared hosting accounts, control resources, and streamline website deployment with ease.
+    Auto-generate API documentation from OpenAPI specifications.
   </Card>
 </Columns>
