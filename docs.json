@@ -4,8 +4,8 @@
   "name": "Hoganhost API Document",
   "colors": {
     "primary": "#2563EB",
-    "light": "#0F172A",
-    "dark": "#2563EB"
+    "light": "#60A5FA",
+    "dark": "#1E3A8A"
   },
   "favicon": "/hoganhostfavicon.png",
   "navigation": {
