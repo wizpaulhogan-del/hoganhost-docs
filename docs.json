@@ -7,7 +7,7 @@
     "light": "#0F172A",
     "dark": "#60A5FA"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/hoganhostfavicon.png",
   "navigation": {
     "tabs": [
       {
@@ -84,8 +84,8 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/hoganhostlogo.png",
+    "dark": "/logo/hoganhostlogo.png"
   },
   "navbar": {
     "links": [
