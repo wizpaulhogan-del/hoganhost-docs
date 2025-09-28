@@ -1,0 +1,17 @@
+{
+  "name": "HoganHost Docs",
+  "logo": "https://hoganhost.com.ng/client/assets/img/logo.png",
+  "navigation": [
+    {
+      "group": "Cloud API",
+      "pages": [
+        { "name": "Get Started", "path": "get-started" },
+        { "name": "Create Server", "path": "create-server" },
+        { "name": "Server Info", "path": "server-info" },
+        { "name": "Server Actions", "path": "server-actions" },
+        { "name": "Delete Server", "path": "delete-server" }
+      ]
+    }
+  ]
+}
+
