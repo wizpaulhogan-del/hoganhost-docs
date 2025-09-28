@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Hoganhost API Document",
   "colors": {
     "primary": "#2563EB",
     "light": "#0F172A",
@@ -72,32 +72,32 @@
       "anchors": [
         {
           "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
+          "href": "https://docs.hoganhost.com.ng",
           "icon": "book-open-cover"
         },
         {
           "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "href": "https://hoganhost.com.ng/blog",
           "icon": "newspaper"
         }
       ]
     }
   },
   "logo": {
-    "light": "/logo/hoganhostlogo.png",
+    "light": "/logo/hoganhostlight.png",
     "dark": "/logo/hoganhostlogo.png"
   },
   "navbar": {
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:suuport@hoganhost.com.ng"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://hoganhost.com.ng/client"
     }
   },
   "contextual": {
@@ -114,9 +114,10 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "f: "https://facebook.com/hoganhos",
+      "x": "https://x.com/hoganhost_ng",
+      "github": "https://github.com/hoganhost",
+      "linkedin": "https://linkedin.com/company/hoganhost"
     }
   }
 }
