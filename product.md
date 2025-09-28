@@ -1,0 +1,64 @@
+---
+title: "Introduction"
+description: "An intro to Hoganhost Documentation."
+---
+
+## Setting up
+
+Our API is designed to empower developers, streamline workflows, and enhance applications by providing seamless access to domains, hosting services, and communication tools. This comprehensive documentation serves as your guide to understanding and leveraging the full capabilities of the HoganHost API.
+
+Inside, you will find detailed explanations, practical examples, and step-by-step instructions to help you integrate our services efficiently. Whether you are an experienced developer or just getting started, our goal is to make your experience with the HoganHost API smooth, productive, and rewarding.
+
+## Current Products with API Access
+
+. Domain Management
+
+. Web Hosting Services
+
+. Communication Tools & Integrations
+
+. And more
+
+
+
+<Card
+  title="Start here"
+  icon="rocket"
+  horizontal
+>
+  Follow our three step quickstart guide.
+</Card>
+
+
+Design a docs site that looks great and empowers your users.
+
+<Columns cols={2}>
+  <Card
+    title="Domains"
+    icon="pen-to-square"
+    href="/development"
+  >
+    Edit your docs locally and preview them in real time.
+  </Card>
+  <Card
+    title="Cloud Server"
+    icon="palette"
+    href="/essentials/settings"
+  >
+    Customize the design and colors of your site to match your brand.
+  </Card>
+    <Card
+    title="Reseller"
+    icon="map"
+    href="/essentials/navigation"
+  >
+    Organize your docs to help users find what they need and succeed with your product.
+  </Card>
+  <Card
+    title="Shared Hosting"
+    icon="terminal"
+    href="/api-reference/introduction"
+  >
+    Auto-generate API documentation from OpenAPI specifications.
+  </Card>
+</Columns>
