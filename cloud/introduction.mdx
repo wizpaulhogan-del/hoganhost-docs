@@ -24,7 +24,7 @@ If your key is missing or invalid, the API responds with an **Unauthorized** err
 To provision a new server, use the `POST /servers` endpoint:
 
 ```bash
-curl -X POST "https://cloud.hoganhost.com/api/v1/servers"   -H "Authorization: Bearer YOUR_API_KEY"   -H "Content-Type: application/json"   -d '{
+curl -X POST "https://api.hoganhost.com.ng/api/v1/servers"   -H "Authorization: Bearer YOUR_API_KEY"   -H "Content-Type: application/json"   -d '{
         "name": "myserver",
         "plan": "s-1vcpu-1gb",
         "region": "nyc1",
@@ -38,13 +38,10 @@ curl -X POST "https://cloud.hoganhost.com/api/v1/servers"   -H "Authorization: B
     Example: `web-01`, `db-primary`.
     
 -   **`plan`** – Defines the server’s resources (CPU, RAM, disk).  
-    See [Available Plans](#available-plans).
     
 -   **`region`** – The datacenter where your server will be deployed.  
-    See [Available Regions](#available-regions).
     
--   **`image`** – The operating system or application image installed.  
-    See [Available Images](#available-images).
+-   **`image`** – The operating system or application image installed.
     
 
 * * *
