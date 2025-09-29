@@ -108,7 +108,7 @@ curl_close($ch);
 
 echo $response;
 ?>
-
+```
 ### Example Response
 ```json
 {
@@ -160,7 +160,7 @@ $response = curl_exec($ch);
 curl_close($ch);
 
 echo $response;
-
+```
 
 
 ### Power Off
@@ -191,7 +191,7 @@ $response = curl_exec($ch);
 curl_close($ch);
 
 echo $response;
-
+```
 
 
 ### Shutdown
@@ -223,7 +223,7 @@ $response = curl_exec($ch);
 curl_close($ch);
 
 echo $response;
-
+```
 
 
 ### Reboot
@@ -254,7 +254,7 @@ $response = curl_exec($ch);
 curl_close($ch);
 
 echo $response;
-
+```
 
 
 ---
@@ -284,7 +284,7 @@ $response = curl_exec($ch);
 curl_close($ch);
 
 echo $response;
-
+```
 
 ⚠️ **Warning**: This action is irreversible. The server and its data cannot be recovered once deleted.  
 
