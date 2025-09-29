@@ -1,0 +1,129 @@
+# Introduction
+
+Welcome to the **HoganHost Cloud API**.  
+This guide will walk you through authenticating, provisioning, and managing your servers programmatically.
+
+All API requests are made over **HTTPS** and must include your unique API key.
+
+* * *
+
+## Authentication
+
+Each request must include your API key in the `Authorization` header:
+
+```bash
+curl -X GET "https://cloud.hoganhost.com/api/v1/servers"   -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+If your key is missing or invalid, the API responds with an **Unauthorized** error.
+
+* * *
+
+## Creating a Server
+
+To provision a new server, use the `POST /servers` endpoint:
+
+```bash
+curl -X POST "https://cloud.hoganhost.com/api/v1/servers"   -H "Authorization: Bearer YOUR_API_KEY"   -H "Content-Type: application/json"   -d '{
+        "name": "myserver",
+        "plan": "s-1vcpu-1gb",
+        "region": "nyc1",
+        "image": "ubuntu-22-04-x64"
+      }'
+```
+
+### Field Reference
+
+-   **`name`** – A human-friendly identifier for your server. This will also be used as the server’s hostname.  
+    Example: `web-01`, `db-primary`.
+    
+-   **`plan`** – Defines the server’s resources (CPU, RAM, disk).  
+    See [Available Plans](#available-plans).
+    
+-   **`region`** – The datacenter where your server will be deployed.  
+    See [Available Regions](#available-regions).
+    
+-   **`image`** – The operating system or application image installed.  
+    See [Available Images](#available-images).
+    
+
+* * *
+
+## Available Plans
+
+| Slug | Description |
+| --- | --- |
+| `s-1vcpu-1gb` | Standard: 1 vCPU, 1 GB RAM |
+| `s-1vcpu-2gb` | Standard: 1 vCPU, 2 GB RAM |
+| `s-2vcpu-2gb` | Standard: 2 vCPU, 2 GB RAM |
+| `s-2vcpu-4gb` | Standard: 2 vCPU, 4 GB RAM |
+| `g-2vcpu-8gb` | General Purpose: 2 vCPU, 8 GB RAM |
+| `g-4vcpu-16gb` | General Purpose: 4 vCPU, 16 GB RAM |
+| `g-8vcpu-32gb` | General Purpose: 8 vCPU, 32 GB RAM |
+| `g-16vcpu-64gb` | General Purpose: 16 vCPU, 64 GB RAM |
+| `c-2` | Compute Optimized: 2 vCPU |
+| `c-4` | Compute Optimized: 4 vCPU |
+| `c-8` | Compute Optimized: 8 vCPU |
+| `c-16` | Compute Optimized: 16 vCPU |
+| `s-1vcpu-1gb-35gb-intel` | Standard (Intel): 1 vCPU, 1 GB RAM, 35 GB Disk |
+| `s-1vcpu-2gb-70gb-intel` | Standard (Intel): 1 vCPU, 2 GB RAM, 70 GB Disk |
+| `s-2vcpu-2gb-90gb-intel` | Standard (Intel): 2 vCPU, 2 GB RAM, 90 GB Disk |
+| `s-2vcpu-4gb-120gb-intel` | Standard (Intel): 2 vCPU, 4 GB RAM, 120 GB Disk |
+| `g-2vcpu-8gb-intel` | General Purpose (Intel): 2 vCPU, 8 GB RAM |
+| `g-4vcpu-16gb-intel` | General Purpose (Intel): 4 vCPU, 16 GB RAM |
+| `g-8vcpu-32gb-intel` | General Purpose (Intel): 8 vCPU, 32 GB RAM |
+| `g-16vcpu-64gb-intel` | General Purpose (Intel): 16 vCPU, 64 GB RAM |
+| `c-4-intel` | Compute Optimized (Intel): 4 vCPU |
+| `c-8-intel` | Compute Optimized (Intel): 8 vCPU |
+| `c-16-intel` | Compute Optimized (Intel): 16 vCPU |
+| `c-32-intel` | Compute Optimized (Intel): 32 vCPU |
+
+* * *
+
+## Available Regions
+
+| Slug | Location | Country |
+| --- | --- | --- |
+| `nyc1` | New York 1 | USA |
+| `nyc3` | New York 3 | USA |
+| `sfo2` | San Francisco 2 | USA |
+| `sfo3` | San Francisco 3 | USA |
+| `ams3` | Amsterdam 3 | Netherlands |
+| `sgp1` | Singapore 1 | Singapore |
+| `lon1` | London 1 | UK |
+| `fra1` | Frankfurt 1 | Germany |
+| `tor1` | Toronto 1 | Canada |
+| `blr1` | Bangalore 1 | India |
+
+* * *
+
+## Available Images
+
+Below are common base and application images:
+
+| Slug | Description |
+| --- | --- |
+| `ubuntu-24-04-x64` | Ubuntu 24.04 LTS (x64) |
+| `ubuntu-22-04-x64` | Ubuntu 22.04 LTS (x64) |
+| `ubuntu-20-04-x64` | Ubuntu 20.04 LTS (x64) |
+| `debian-12-x64` | Debian 12 (x64) |
+| `debian-11-x64` | Debian 11 (x64) |
+| `rockylinux-9-x64` | Rocky Linux 9 (x64) |
+| `rockylinux-8-x64` | Rocky Linux 8 (x64) |
+| `almalinux-8-x64` | AlmaLinux 8 (x64) |
+| `fedora-40-x64` | Fedora 40 (x64) |
+| `centos-7-x64` | CentOS 7 (legacy) |
+| `docker-20-04` | Docker on Ubuntu 20.04 (x64) |
+| `wordpress-php8-22-04` | WordPress on Ubuntu 22.04 (x64) |
+
+> ℹ️ **Note**: Marketplace app slugs may vary. Use the Images API for the most up-to-date list.
+
+* * *
+
+## Best Practices
+
+-   Use `shutdown` before `power_off` or `delete` for graceful termination.
+-   Reserve `reboot` for controlled restarts rather than issue recovery.
+-   Store and track your `server_id` for later operations.
+-   Prefer LTS images for long-term stability and security.
+-   Deploy servers in regions nearest to your end users for optimal latency.

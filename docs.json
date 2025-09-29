@@ -17,15 +17,13 @@
             "group": "Getting started",
             "pages": [
               "index",
-              "quickstart",
-              "development"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Cloud",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "cloud/introduction",
+              "cloud/cloud-actions"
             ]
           },
           {
