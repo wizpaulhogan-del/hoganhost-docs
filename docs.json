@@ -30,7 +30,10 @@
             "group": "Domain",
             "pages": [
             ]
-          },
+          }  
+        ]   
+      }
+    ],
 
     "global": {
       "anchors": [
