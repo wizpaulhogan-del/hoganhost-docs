@@ -27,12 +27,9 @@
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Domain",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              ""
             ]
           },
           {
