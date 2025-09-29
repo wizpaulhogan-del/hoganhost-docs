@@ -16,14 +16,14 @@
           {
             "group": "Getting started",
             "pages": [
-              "index",
+              "index"
             ]
           },
           {
             "group": "Cloud",
             "pages": [
               "cloud/introduction",
-              "cloud/cloud-actions",
+              "cloud/cloud-actions"
             ]
           },
           {
