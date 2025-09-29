@@ -1,0 +1,315 @@
+export const frontMatter = {
+  title: "Getting Started",
+  sidebar_position: 1,
+}
+
+# Getting Started with HoganHost Cloud API
+
+Welcome to the **HoganHost Cloud API**. This guide walks you through how to authenticate, create servers, manage their lifecycle, and delete them — with **toggleable examples** in cURL and PHP.
+
+---
+
+## Authentication
+
+Every request must include your API Key in the `Authorization` header.
+
+**Base URL**  
+```
+https://api.hoganhost.com.ng/v1/
+```
+
+**Required Headers**  
+```
+Authorization: Bearer YOUR_API_KEY  
+Content-Type: application/json
+```
+
+> Replace `YOUR_API_KEY` with your actual API key generated in your HoganHost dashboard.
+
+If you omit or supply an invalid key, you’ll get a response like:
+```json
+{
+  "error": "Unauthorized",
+  "message": "Missing or invalid API key"
+}
+```
+
+---
+
+## Create a Server
+
+Provision a new server by specifying **name, region, size, image**.
+
+<details>
+<summary>cURL Example</summary>
+
+```bash
+curl -X POST "https://api.hoganhost.com.ng/v1/servers.php"   -H "Authorization: Bearer YOUR_API_KEY"   -H "Content-Type: application/json"   -d '{
+    "name": "my-server",
+    "region": "nyc3",
+    "size": "s-1vcpu-1gb",
+    "image": "ubuntu-22-04-x64"
+  }'
+```
+</details>
+
+<details>
+<summary>PHP Example</summary>
+
+```php
+<?php
+$apiKey = "YOUR_API_KEY";
+$url = "https://api.hoganhost.com.ng/v1/servers.php";
+
+$data = [
+  "name"   => "my-server",
+  "region" => "nyc3",
+  "size"   => "s-1vcpu-1gb",
+  "image"  => "ubuntu-22-04-x64"
+];
+
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+  "Authorization: Bearer $apiKey",
+  "Content-Type: application/json"
+]);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+echo $response;
+```
+</details>
+
+**Response (example)**  
+```json
+{
+  "id": "12345",
+  "name": "my-server",
+  "region": "nyc3",
+  "size": "s-1vcpu-1gb",
+  "image": "ubuntu-22-04-x64",
+  "ip_address": "203.0.113.10",
+  "status": "provisioning"
+}
+```
+
+---
+
+## Get Server Information
+
+Retrieve details of an existing server by its `SERVER_ID`.
+
+<details>
+<summary>cURL Example</summary>
+
+```bash
+curl -X GET "https://api.hoganhost.com.ng/v1/servers.php?id=SERVER_ID"   -H "Authorization: Bearer YOUR_API_KEY"
+```
+</details>
+
+<details>
+<summary>PHP Example</summary>
+
+```php
+<?php
+$apiKey = "YOUR_API_KEY";
+$serverId = "SERVER_ID";
+$url = "https://api.hoganhost.com.ng/v1/servers.php?id=$serverId";
+
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+  "Authorization: Bearer $apiKey"
+]);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+echo $response;
+```
+</details>
+
+**Response (example)**  
+```json
+{
+  "id": "12345",
+  "name": "my-server",
+  "region": "nyc3",
+  "size": "s-1vcpu-1gb",
+  "image": "ubuntu-22-04-x64",
+  "ip_address": "203.0.113.10",
+  "status": "active",
+  "power_state": "on",
+  "created_at": "2025-09-29T10:00:00Z"
+}
+```
+
+---
+
+## Server Actions (Power On / Off / Shutdown / Reboot)
+
+These endpoints let you control the server’s state without deleting it.
+
+### Power On (start a stopped server)
+
+<details>
+<summary>cURL Example</summary>
+
+```bash
+curl -X POST "https://api.hoganhost.com.ng/v1/servers.php?id=SERVER_ID&action=actions"   -H "Authorization: Bearer YOUR_API_KEY"   -H "Content-Type: application/json"   -d '{"type":"power_on"}'
+```
+</details>
+
+<details>
+<summary>PHP Example</summary>
+
+```php
+<?php
+$apiKey = "YOUR_API_KEY";
+$serverId = "SERVER_ID";
+$url = "https://api.hoganhost.com.ng/v1/servers.php?id=$serverId&action=actions";
+
+$data = ["type" => "power_on"];
+
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+  "Authorization: Bearer $apiKey",
+  "Content-Type: application/json"
+]);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+echo $response;
+```
+</details>
+
+---
+
+### Power Off (force shutdown)
+
+<details>
+<summary>cURL Example</summary>
+
+```bash
+curl -X POST "https://api.hoganhost.com.ng/v1/servers.php?id=SERVER_ID&action=actions"   -H "Authorization: Bearer YOUR_API_KEY"   -H "Content-Type: application/json"   -d '{"type":"power_off"}'
+```
+</details>
+
+<details>
+<summary>PHP Example</summary>
+
+```php
+$data = ["type" => "power_off"];
+```
+</details>
+
+---
+
+### Shutdown (graceful shutdown inside OS)
+
+<details>
+<summary>cURL Example</summary>
+
+```bash
+curl -X POST "https://api.hoganhost.com.ng/v1/servers.php?id=SERVER_ID&action=actions"   -H "Authorization: Bearer YOUR_API_KEY"   -H "Content-Type: application/json"   -d '{"type":"shutdown"}'
+```
+</details>
+
+<details>
+<summary>PHP Example</summary>
+
+```php
+$data = ["type" => "shutdown"];
+```
+</details>
+
+---
+
+### Reboot (restart the server)
+
+<details>
+<summary>cURL Example</summary>
+
+```bash
+curl -X POST "https://api.hoganhost.com.ng/v1/servers.php?id=SERVER_ID&action=actions"   -H "Authorization: Bearer YOUR_API_KEY"   -H "Content-Type: application/json"   -d '{"type":"reboot"}'
+```
+</details>
+
+<details>
+<summary>PHP Example</summary>
+
+```php
+$data = ["type" => "reboot"];
+```
+</details>
+
+---
+
+## Delete a Server
+
+Permanently destroy a server and all its data. This action **cannot be undone**.
+
+<details>
+<summary>cURL Example</summary>
+
+```bash
+curl -X DELETE "https://api.hoganhost.com.ng/v1/servers.php?id=SERVER_ID"   -H "Authorization: Bearer YOUR_API_KEY"
+```
+</details>
+
+<details>
+<summary>PHP Example</summary>
+
+```php
+<?php
+$apiKey = "YOUR_API_KEY";
+$serverId = "SERVER_ID";
+$url = "https://api.hoganhost.com.ng/v1/servers.php?id=$serverId";
+
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+  "Authorization: Bearer $apiKey"
+]);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+echo $response;
+```
+</details>
+
+**Response (example)**  
+```json
+{
+  "id": "12345",
+  "status": "deleted",
+  "message": "Server and all data permanently removed"
+}
+```
+
+---
+
+## Best Practices
+
+- When possible, use **shutdown** for graceful termination before `power_off` or `delete`.  
+- Use **reboot** for planned updates, not as a recovery from catastrophic failure.  
+- Always record the `SERVER_ID` returned when creating servers.  
+- Rotate and protect your API keys — never expose them publicly.
+
+---
+
+## Next Steps
+
+- Explore the **API Reference** for more endpoints (volumes, snapshots, networking, etc.).  
+- Automate server provisioning in your app using this API.  
+- Build integrations (Terraform, Ansible, SDKs) for your workflow.
